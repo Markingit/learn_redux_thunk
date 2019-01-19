@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 
 import 'antd/dist/antd.css'
 import store from './store/index'
-import { getInputChangeAion, getAddItemAction, getDeleteItemAction, initListAction } from './store/actionCreators'
+import { getInputChangeAion, getAddItemAction, getDeleteItemAction,  getTodoList } from './store/actionCreators'
 import TodoListUI from './TodoListUI'
-import axios from 'axios';
+// import axios from 'axios';
 class TodoList extends Component {
 
     constructor(props) {
@@ -45,20 +45,18 @@ class TodoList extends Component {
     }
 
     componentDidMount() {
-        axios.get('/api/todolist')
-        .then((res) => {
-          const data = res.data
-          const action = initListAction(data)
-          store.dispatch(action)
-        })
-        .catch(() => {console.log('error')})
+        const action = getTodoList();
+        store.dispatch(action)
+        // axios.get('/api/todolist')
+        // .then((res) => {
+        //   const data = res.data
+        //   const action = initListAction(data)
+        //   store.dispatch(action)
+        // })
+        // .catch(() => {console.log('error')})
     }
 
     handleInputChange(e) {
-        // const action = {
-        //     type: CHANGE_INPIUT_VALUE,
-        //     value: e.target.value
-        // }
         const action = getInputChangeAion(e.target.value)
         store.dispatch(action)
     }
@@ -68,17 +66,10 @@ class TodoList extends Component {
     }
 
     handleBtnclick() {
-        // const action = {
-        //     type: ADD_TODO_LIST
-        // };
         const action = getAddItemAction()
         store.dispatch(action)
     }
     handleItemDelete(index) {
-        // const action = {
-        //     type: DELETE_TODO_LIST,
-        //     index
-        // }
         const action = getDeleteItemAction(index)
         store.dispatch(action)
     }
