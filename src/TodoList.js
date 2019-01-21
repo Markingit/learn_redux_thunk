@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import 'antd/dist/antd.css'
 import store from './store/index'
-import { getInputChangeAion, getAddItemAction, getDeleteItemAction,  getTodoList } from './store/actionCreators'
+import { getInputChangeAion, getAddItemAction, getDeleteItemAction, getTodoList } from './store/actionCreators'
 import TodoListUI from './TodoListUI'
 // import axios from 'axios';
 class TodoList extends Component {
@@ -45,8 +45,12 @@ class TodoList extends Component {
     }
 
     componentDidMount() {
+        //redux-thunk
         const action = getTodoList();
         store.dispatch(action)
+
+
+
         // axios.get('/api/todolist')
         // .then((res) => {
         //   const data = res.data
@@ -54,6 +58,10 @@ class TodoList extends Component {
         //   store.dispatch(action)
         // })
         // .catch(() => {console.log('error')})
+        //redux-saga
+        // const action = getInitList()
+        // store.dispatch(action)
+        // console.log(action)
     }
 
     handleInputChange(e) {

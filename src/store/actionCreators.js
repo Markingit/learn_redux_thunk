@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { CHANGE_INPIUT_VALUE, ADD_TODO_LIST, DELETE_TODO_LIST, INIT_LIST_ACTION } from './actionTypes'
+import { CHANGE_INPIUT_VALUE, ADD_TODO_LIST, DELETE_TODO_LIST, INIT_LIST_ACTION, GET_ININ_LIST } from './actionTypes'
 
 export const getInputChangeAion = (value) => ({
     type: CHANGE_INPIUT_VALUE,
@@ -32,3 +32,8 @@ export const getTodoList =  () => {
         .catch(() => {console.log('error')})
     }
 }
+
+
+export const getInitList = () => ({
+    type: GET_ININ_LIST
+})
